@@ -22,13 +22,13 @@ public class RegisterTestSteps {
 
     @When("^I register with firstname \"([^\"]*)\" lastname \"([^\"]*)\" email \"([^\"]*)\" password \"([^\"]*)\"$")
     public void iRegisterWithFirstnameLastnameEmailPassword(String firstname, String lastname,
-                                                            String email, String password) throws BusinessException {
+                                                            String email, String password) throws BusinessException, SQLException {
         register.registerAsOwner(firstname, lastname, email, password);
     }
 
     @Then("^the owner with firstname \"([^\"]*)\" lastname \"([^\"]*)\" email \"([^\"]*)\" password \"([^\"]*)\" should exist in the database$")
     public void theOwnerWithFirstnameLastnameEmailPasswordShouldExistInTheDatabase(String firstname, String lastname,
-                                                          String email, String password){
+                                                          String email, String password) throws SQLException{
         Assert.assertEquals(DataAccess.getOwnerByEmail(email), new Owner(firstname, lastname, email, password));
     }
 }

@@ -6,6 +6,12 @@ public class Owner {
     private String email;
     private String password;
 
+    /**
+     * @param firstname
+     * @param lastname
+     * @param email
+     * @param password
+     */
     public  Owner(String firstname, String lastname, String email, String password){
         this.firstName = firstname;
         this.lastName = lastname;
@@ -13,44 +19,18 @@ public class Owner {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    /**
+     * @return
+     */
     @Override
     public String toString(){
         return String.format("Firstname: %s\nLastname:%s\nEmail:%s", firstName,lastName,email);
     }
 
-
+    /**
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals (Object obj){
         Owner owner = (Owner) obj;
