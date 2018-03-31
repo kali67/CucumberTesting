@@ -17,5 +17,6 @@ public class GenericTestRunner {
     @BeforeClass
     public static void restoreDatabase(){
         DataAccess.deleteAllOwner();
+        DataAccess.deleteAllVehicles();
     }
 }

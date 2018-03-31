@@ -1,20 +1,20 @@
-package business.rules.registration;
+package BR.registration;
 
 import services.DataAccess;
-import utils.InputChecker;
+import utils.Input;
 
 import java.sql.SQLException;
 
-public class Register {
+public class RegisterBR {
 
     public void registerAsOwner(String firstname, String lastname, String email,
                                 String password) throws BusinessException, SQLException {
 
-        if (InputChecker.isNameOnlyChars(firstname) && InputChecker.isNameOnlyChars(lastname)) {
+        if (Input.isNameOnlyChars(firstname) && Input.isNameOnlyChars(lastname)) {
             if (!isRegisteredEmail(email)){
                 DataAccess.insertIntoOwner(firstname, lastname, email, password);
             } else {
-                throw new BusinessException("Email is already registered");
+                throw new BusinessException("Email address is already registered");
             }
         }
     }
@@ -24,12 +24,12 @@ public class Register {
                                 String odometer, String regYear, String wofExpiry) throws BusinessException, SQLException{
 
         if (isRegisteredEmail(email)){
-            if (InputChecker.isCorrectDateFormat(manufactureDate) && InputChecker.isCorrectDateFormat(regYear)
-                    && InputChecker.isCorrectDateFormat(wofExpiry)) {
+            if (Input.isCorrectDateFormat(manufactureDate) && Input.isYear(regYear)
+                    && Input.isCorrectDateFormat(wofExpiry) && Input.isAFuel(fuelType) && Input.isNameOnlyChars(model)
+                    && Input.isNameOnlyChars(make) && Input.isValidPlate(plate) && Input.isValidVin(vin)) {
                 DataAccess.insertIntoVehicle(email, plate, model, make, manufactureDate, fuelType, vin, odometer, regYear, wofExpiry);
             }
-        }
-        else {
+        } else {
             throw new BusinessException("Email address is not a registered email");
         }
     }

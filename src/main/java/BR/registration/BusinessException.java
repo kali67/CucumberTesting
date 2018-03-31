@@ -1,4 +1,4 @@
-package business.rules.registration;
+package BR.registration;
 
 public class BusinessException extends Exception{
 
