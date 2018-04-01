@@ -1,6 +1,6 @@
 package utilsTesting;
 
-import BR.registration.BusinessException;
+import business.rules.BRRegistrationException;
 import org.junit.Assert;
 import org.junit.Test;
 import utils.Input;
@@ -11,28 +11,28 @@ public class InputTest {
     public void isNameOnlyCharsTestValid(){
         try {
             Assert.assertEquals(true, Input.isNameOnlyChars("Bob"));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
 
-    @Test(expected = BusinessException.class)
-    public void isNameOnlyCharsTestContainsNumbers() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isNameOnlyCharsTestContainsNumbers() throws BRRegistrationException {
         Input.isNameOnlyChars("B0b");
     }
 
-    @Test(expected = BusinessException.class)
-    public void isNameOnlyCharsTestContainsSpecialChars() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isNameOnlyCharsTestContainsSpecialChars() throws BRRegistrationException {
         Input.isNameOnlyChars("B@b_");
     }
 
-    @Test(expected = BusinessException.class)
-    public void isCorrectDateFormatTestInvalidDay() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isCorrectDateFormatTestInvalidDay() throws BRRegistrationException {
         Input.isCorrectDateFormat("39.12.2000");
     }
 
-    @Test(expected = BusinessException.class)
-    public void isCorrectDateFormatTestInvalidYear() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isCorrectDateFormatTestInvalidYear() throws BRRegistrationException {
         Input.isCorrectDateFormat("12.12.20000");
     }
 
@@ -40,7 +40,7 @@ public class InputTest {
     public void isCorrectTestDateFormat(){
         try {
             Assert.assertEquals(true, Input.isCorrectDateFormat("12.12.2000"));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
@@ -49,18 +49,18 @@ public class InputTest {
     public void isCorrectTestDateFormatNull(){
         try {
             Assert.assertEquals(true, Input.isCorrectDateFormat(null));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
 
-    @Test(expected = BusinessException.class)
-    public void isYearTestTooLarge() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isYearTestTooLarge() throws BRRegistrationException {
         Input.isYear("20000");
     }
 
-    @Test(expected = BusinessException.class)
-    public void isYearTestTooSmall() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isYearTestTooSmall() throws BRRegistrationException {
         Input.isYear("200");
     }
 
@@ -68,7 +68,7 @@ public class InputTest {
     public void isYearTestValid() {
         try {
             Assert.assertEquals(true, Input.isYear("2000"));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
@@ -77,13 +77,13 @@ public class InputTest {
     public void isYearTestNull() {
         try {
             Assert.assertEquals(true, Input.isYear(null));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
 
-    @Test(expected = BusinessException.class)
-    public void isYearTestNotInt() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isYearTestNotInt() throws BRRegistrationException {
         Input.isYear("wqr");
     }
 
@@ -91,13 +91,13 @@ public class InputTest {
     public void isAFuelTest() {
         try {
             Assert.assertEquals(true, Input.isAFuel("petrol"));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
 
-    @Test(expected = BusinessException.class)
-    public void isAFuelTestInvalidFuel() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isAFuelTestInvalidFuel() throws BRRegistrationException {
         Input.isAFuel("notafuel");
     }
 
@@ -105,13 +105,13 @@ public class InputTest {
     public void isAFuelTestNull() {
         try {
             Assert.assertEquals(true, Input.isAFuel(null));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
 
-    @Test(expected = BusinessException.class)
-    public void isValidPlateTestInvalidPlate() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isValidPlateTestInvalidPlate() throws BRRegistrationException {
         Input.isValidPlate("ABCDEFG12");
     }
 
@@ -119,13 +119,13 @@ public class InputTest {
     public void isValidPlateTestValid() {
         try {
             Assert.assertEquals(true, Input.isValidPlate("ABC123"));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
 
-    @Test(expected = BusinessException.class)
-    public void isValidVinTestTooSmall() throws BusinessException{
+    @Test(expected = BRRegistrationException.class)
+    public void isValidVinTestTooSmall() throws BRRegistrationException {
         Input.isValidVin("1234567890");
     }
 
@@ -133,7 +133,7 @@ public class InputTest {
     public void isValidVinTestValid() {
         try {
             Assert.assertEquals(true, Input.isValidVin("12345678901234567"));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }
@@ -142,7 +142,7 @@ public class InputTest {
     public void isValidVinTestNull() {
         try {
             Assert.assertEquals(true, Input.isValidVin(null));
-        } catch (BusinessException e){
+        } catch (BRRegistrationException e){
             Assert.fail();
         }
     }

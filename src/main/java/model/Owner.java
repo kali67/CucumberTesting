@@ -1,16 +1,18 @@
 package model;
 
 public class Owner {
+
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
     /**
-     * @param firstname
-     * @param lastname
-     * @param email
-     * @param password
+     * Constructor of an owner object
+     * @param firstname - first name of the owner
+     * @param lastname - last name of the owner
+     * @param email - email address of the owner
+     * @param password - password of the owner
      */
     public  Owner(String firstname, String lastname, String email, String password){
         this.firstName = firstname;
@@ -20,16 +22,8 @@ public class Owner {
     }
 
     /**
-     * @return
-     */
-    @Override
-    public String toString(){
-        return String.format("Firstname: %s\nLastname:%s\nEmail:%s", firstName,lastName,email);
-    }
-
-    /**
-     * @param obj
-     * @return
+     * @param obj - object for comparision
+     * @return - return true if objects are considered equal
      */
     @Override
     public boolean equals (Object obj){

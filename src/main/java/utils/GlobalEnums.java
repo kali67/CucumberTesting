@@ -2,33 +2,26 @@ package utils;
 
 class GlobalEnums {
 
+    /**
+     * Enum for fuel type of a vehicle
+     */
     public enum Fuel {
-        PETROL ("PETROL"),
-        DIESEL ("DIESEL"),
-        ELECTRIC ("ELECTRIC"),
-        GAS ("GAS"),
-        OTHER ("OTHER");
+        PETROL,
+        DIESEL,
+        ELECTRIC,
+        GAS,
+        OTHER;
 
-        private String value;
-
-        Fuel(final String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return this.getValue();
-        }
-
+        /**
+         * Gets the fuel enum from a string value
+         * @param value - string value of the enum to be returned
+         * @return - fuel enum if valid string is passed in or null
+         */
         public static Enum getEnumFromString(String value) {
             try {
                 return Fuel.valueOf(value.toUpperCase());
             } catch (IllegalArgumentException e) {
-                return null;
+                return null; // return null if getting the value of fails
             }
         }
 

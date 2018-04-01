@@ -1,0 +1,20 @@
+
+CREATE TABLE owner (
+  firstname varchar(10) not null,
+  lastname varchar(10) not null,
+  email varchar(30) PRIMARY KEY,
+  password varchar(20) not null
+);
+
+
+CREATE TABLE vehicle (
+  plate varchar(6) not null PRIMARY KEY,
+  model varchar(10) not null,
+  make varchar(10) not null,
+  manufactureDate DATE,
+  fuelType VARCHAR(8), vin VARCHAR(17),
+  firstRegistrationYear int,
+  odometer int,
+  wofExpiryDate Date,
+  ownerID varchar(20) references owns(ownerID)
+);

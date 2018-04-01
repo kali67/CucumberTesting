@@ -1,7 +1,7 @@
 package steps;
 
 import application.Registration;
-import BR.registration.BusinessException;
+import business.rules.BRRegistrationException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -23,7 +23,7 @@ public class OwnerRegistrationTestSteps {
 
     @When("^I register with firstname \"([^\"]*)\" lastname \"([^\"]*)\" email \"([^\"]*)\" password \"([^\"]*)\"$")
     public void iRegisterWithFirstnameLastnameEmailPassword(String firstname, String lastname,
-                                                            String email, String password) throws BusinessException, SQLException {
+                                                            String email, String password) throws BRRegistrationException, SQLException {
         registration.registerOwner(firstname, lastname, email, password);
     }
 
